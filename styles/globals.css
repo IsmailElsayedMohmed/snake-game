@@ -1,3 +1,129 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.grid-auto {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.backface {
+  backface-visibility: hidden;
+}
+
+.animation-left {
+  animation: leftAnimation 0.5s ease-in-out;
+}
+@keyframes leftAnimation {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+.animation-right {
+  animation: rightAnimation 0.5s ease-in-out forwards;
+}
+@keyframes rightAnimation {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.container2 {
+  width: 1400px;
+  max-width: 90vw;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+.fire::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  width: 40px;
+  transform: translateY(-50%);
+  height: 12px;
+  background: firebrick;
+  border-radius: 50px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: -10px 0 0 5px rgba(157, 0, 0, 0.576), -10px 0 30px 5px firebrick;
+  animation: fireAnimate 2s ease-out forwards;
+}
+
+@keyframes fireAnimate {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100vw;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.border-b-typing {
+  color: #3295db;
+  position: relative;
+}
+.border-b-typing::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  transform: translateX(-20%);
+  width: 15px;
+  background: #3295db;
+  height: 4px;
+  transition: all 0.3s;
+  animation: border-animate 1.2s ease-in infinite alternate-reverse;
+}
+
+@keyframes border-animate {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+.error-animation-typing::before {
+  content: attr(data-wrong);
+  position: absolute;
+  inset: 0;
+  animation: wrong-animate 0.8s ease-in 1 forwards;
+  width: 100%;
+  height: 100%;
+}
+@keyframes wrong-animate {
+  0% {
+    opacity: 100;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(300%);
+  }
+}
+
+.snake-width {
+  animation: snakeWidth 0.3s 0.1s forwards;
+}
+@keyframes snakeWidth {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(25px);
+  }
+}
